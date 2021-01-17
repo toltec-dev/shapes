@@ -1,0 +1,56 @@
+% Copyright (c) 2021 The Toltec Contributors
+% SPDX-License-Identifier: MIT
+%
+% Example document for the Toltec shapes library
+\documentclass[crop, tikz, border=.1cm]{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\input{remarkable}
+
+\begin{document}
+\begin{tikzpicture}
+    \pic (rM-base) at (-2.25, 0) {rM1};
+
+    \pic (rM-power) {rM1};
+    \draw[rM annotation, ultra thick, {Latex[length=2.2mm]}-]
+        ($(rM-power-key-power.south)+(0, -.05)$)
+        to ++(0, -.6);
+
+    \pic[rM1 left fill=rM border]
+        (rM-left) at (2.25, 0) {rM1};
+    \draw[rM annotation, ultra thick, {Latex[length=2.2mm]}-]
+        ($(rM-left-key-left.north)+(0, .05)$)
+        to [out=85, in=-130] ++(.2, .6);
+
+    \pic[rM1 home fill=rM border]
+        (rM-home) at (4.5, 0) {rM1};
+    \draw[rM annotation, ultra thick, {Latex[length=2.2mm]}-]
+        ($(rM-home-key-home.north)+(0, .05)$)
+        to ++(0, .6);
+
+    \pic[rM1 right fill=rM border]
+        (rM-right) at (6.75, 0) {rM1};
+    \draw[rM annotation, ultra thick, {Latex[length=2.2mm]}-]
+        ($(rM-right-key-right.north)+(0, .05)$)
+        to [out=95, in=-50] ++(-.2, .6);
+
+    \pic (rM-tap) at (0, -3) {rM1};
+    \pic at (rM-tap-screen-center) {tap};
+
+    \pic (rM-scroll-x) at (2.25, -3) {rM1};
+    \pic at (rM-scroll-x-screen-center) {scroll x};
+
+    \pic (rM-scroll-y) at (4.5, -3) {rM1};
+    \pic at (rM-scroll-y-screen-center) {scroll y};
+
+    \pic (rM-pen) at (6.75, -3) {rM1};
+
+    \draw[rM border, line cap=round]
+        ($(rM-pen-screen-center)+(0,-.2)$)
+        to [out=40, in=-170] ++(.2, .08)
+        to [out=10, out distance=.4cm, in=10] ++(-.1, .2);
+
+    \pic[rotate=15] at ($(rM-pen-screen-center)+(0,-.2)$) {rM pen};
+\end{tikzpicture}
+\end{document}
